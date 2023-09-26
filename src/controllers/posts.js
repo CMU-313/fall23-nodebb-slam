@@ -30,6 +30,7 @@ postsController.redirectToPost = async function (req, res, next) {
 };
 
 postsController.getRecentPosts = async function (req, res) {
+    console.log("KEEP TRACK OF FUNCTION CALL GET RECENT POSTS");
     const page = parseInt(req.query.page, 10) || 1;
     const postsPerPage = 20;
     const start = Math.max(0, (page - 1) * postsPerPage);
