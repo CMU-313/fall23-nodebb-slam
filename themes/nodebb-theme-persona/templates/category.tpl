@@ -21,6 +21,18 @@
                 <div class="alert alert-warning hide" id="new-topics-alert"></div>
             </a>
 
+            <div class="pull-right">
+                <a class="active" href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <div class="search-container">
+                    <form action="getRecentPosts()">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+
             <span class="pull-right" component="category/controls">
                 <!-- IMPORT partials/category/watch.tpl -->
                 <!-- IMPORT partials/category/sort.tpl -->
