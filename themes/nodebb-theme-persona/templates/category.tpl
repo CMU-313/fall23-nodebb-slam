@@ -25,10 +25,11 @@
                 <a class="active" href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
+                <!-- IMPORT partials/topic/sorttopics.tpl -->
                 <div class="search-container">
-                    <form action="getRecentPosts()">
-                    <input type="text" placeholder="Search.." name="search">
-                    <button type="submit">Submit</button>
+                    <form action="posts.js">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit" onClick="return getRecentPosts()">Submit</button>
                     </form>
                 </div>
             </div>
