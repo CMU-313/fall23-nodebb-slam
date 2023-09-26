@@ -1,17 +1,17 @@
 [
     {
-        "name": "Announcements",
-        "description": "Announcements regarding our community",
-        "descriptionParsed": "<p>Announcements regarding our community</p>\n",
+        "name": "Class 1",
+        "description": "Foundations of Software Engineering",
+        "descriptionParsed": "<p>Foundations of Software Engineering</p>\n",
         "bgColor": "#fda34b",
         "color": "#ffffff",
         "icon" : "fa-bullhorn",
         "order": 1
     },
     {
-        "name": "General Discussion",
-        "description": "A place to talk about whatever you want",
-        "descriptionParsed": "<p>A place to talk about whatever you want</p>\n",
+        "name": "Class 2",
+        "description": "Principles of Microeconomics",
+        "descriptionParsed": "<p>Principles of Microeconomics</p>\n",
         "bgColor": "#59b3d0",
         "color": "#ffffff",
         "icon" : "fa-comments-o",
