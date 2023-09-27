@@ -42,3 +42,8 @@ categoriesController.get = async function (req, res, next) {
     userData.pagination = pagination.create(page, pageCount, req.query);
     res.render('account/categories', userData);
 };
+
+
+
+
+
