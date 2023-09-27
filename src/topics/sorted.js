@@ -112,13 +112,14 @@ module.exports = function (Topics) {
         if (params.term === 'alltime' && !params.cids && !params.tags.length && params.filter !== 'watched' && !params.floatPinned) {
             return tids;
         }
-        const topicData = await Topics.getTopicsFields(tids, ['tid', 'lastposttime', 'upvotes', 'downvotes', 'postcount', 'pinned']);
+        const topicData = await Topics.getTopicsFields(tids, ['tid', 'lastposttime', 'upvotes', 'downvotes', 'postcount', 'pinned', 'related']);
         const sortMap = {
             recent: sortRecent,
             old: sortOld,
             posts: sortPopular,
             votes: sortVotes,
             views: sortViews,
+            related: sortRelated,
         };
         const sortFn = sortMap[params.sort] || sortRecent;
 
@@ -159,6 +160,10 @@ module.exports = function (Topics) {
 
     function sortViews(a, b) {
         return b.viewcount - a.viewcount;
+    }
+
+    function sortRelated(a, b) {
+        return b.name.includes(params) - a.name.includes(params);
     }
 
     async function filterTids(tids, params) {
