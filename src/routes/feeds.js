@@ -35,6 +35,7 @@ module.exports = function (app, middleware) {
     app.get('/category/:category_id/recentposts.rss', middleware.maintenanceMode, generateForCategoryRecentPosts);
     app.get('/user/:userslug/topics.rss', middleware.maintenanceMode, generateForUserTopics);
     app.get('/tags/:tag.rss', middleware.maintenanceMode, generateForTag);
+    app.get('/search.rss', middleware.maintenanceMode, generateForSearch);
 };
 
 async function validateTokenIfRequiresLogin(requiresLogin, cid, req, res) {
@@ -416,6 +417,55 @@ async function generateForTag(req, res) {
         stop: stop,
     }, `tag:${tag}:topics`, res);
 }
+
+
+async function generateForSearch(req, res, next) {
+    if (meta.config['feeds:disableRSS']) {
+        return next();
+    }
+    
+    // hypothetical function to get search results; you'd replace this with your real function
+    const searchResults = await someSearchFunction(req.query.searchTerm);
+    
+    if (!searchResults || searchResults.length === 0) {
+        return next();
+    }
+    
+    // get the first most recent search result
+    const mostRecentResult = searchResults[0];
+    
+    // create the RSS feed for the most recent result
+    const feed = new rss({
+        title: utils.stripHTMLTags(mostRecentResult.title, utils.tags),
+        description: mostRecentResult.content,
+        feed_url: `${nconf.get('url')}/search.rss?searchTerm=${encodeURIComponent(req.query.searchTerm)}`,
+        site_url: `${nconf.get('url')}/topic/${mostRecentResult.slug}`,
+        author: mostRecentResult.author,
+        ttl: 60,
+        pubDate: new Date(mostRecentResult.timestamp).toUTCString(),
+    });
+    
+    // add the item to the feed
+    feed.item({
+        title: mostRecentResult.title,
+        description: mostRecentResult.content,
+        url: `${nconf.get('url')}/topic/${mostRecentResult.slug}`,
+        author: mostRecentResult.author,
+        date: new Date(mostRecentResult.timestamp).toUTCString()
+    });
+
+    sendFeed(feed, res);
+}
+
+
+async function searchForTopics(query, uid) {
+    // This is a placeholder. In a real-world scenario, 
+    // you would call your search engine or database search function here.
+    // You should retrieve topics based on the content that matches the search query.
+    // For now, I'll just return an empty array.
+    return [];
+}
+
 
 function sendFeed(feed, res) {
     const xml = feed.xml();
