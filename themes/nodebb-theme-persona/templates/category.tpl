@@ -20,24 +20,9 @@
             <a href="{url}" class="inline-block">
                 <div class="alert alert-warning hide" id="new-topics-alert"></div>
             </a>
-
-            <div class="pull-right">
-                <a class="active" href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <!-- IMPORT partials/topic/sorttopics.tpl -->
-                <div class="search-container">
-                    <form action="posts.js">
-                    <input type="text" placeholder="Search..." name="search">
-                    <button type="submit" onClick="return getRecentPosts()">Submit</button>
-                    </form>
-                </div>
-            </div>
-
             <span class="pull-right" component="category/controls">
-                <!-- IMPORT partials/category/watch.tpl -->
                 <!-- IMPORT partials/category/sort.tpl -->
-                <!-- IMPORT partials/category/tools.tpl -->
+                <!-- IMPORT partials/topic/sorttopics.tpl -->
             </span>
         </div>
 
