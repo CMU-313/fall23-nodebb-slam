@@ -21,7 +21,6 @@
                 <div class="alert alert-warning hide" id="new-topics-alert"></div>
             </a>
             <span class="pull-right" component="category/controls">
-                <!-- IMPORT partials/category/search.tpl -->
                 <!-- IMPORT partials/category/watch.tpl -->
                 <!-- IMPORT partials/category/sort.tpl -->
                 <!-- IMPORT partials/topic/sorttopics.tpl -->
