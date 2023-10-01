@@ -58,6 +58,27 @@ Topics.getTopics = async function (tids, options) {
     return await Topics.getTopicsByTids(tids, options);
 };
 
+Topics.getTopicsByTitle = async function (input, cid) {
+    console.log("HELLLO HERE I AM");
+    if (typeof input !== 'string') {
+        return null;
+    }
+    let search = input.trim().toLowerCase();
+    let all_topics_list = [];
+    all_topics_list = await db.getSortedSetRange(`cid:${cid}:tids`, 0, -1);
+    let title_list = [];
+    for (let i = 0; i < all_topics_list.length; i++) {
+        title_list[i] = db.getObjectsFields(`topic:${all_topics_list[i]}`, ['tid', 'title']);
+    }
+    let res = []
+    for (let i = 0; i < title_list.length; i++) {
+        if (title_list[i].title.includes(search)) {
+            res.push(title_list[i].tid);
+        }
+    }
+    return res;
+} 
+
 Topics.getTopicsByTids = async function (tids, options) {
     if (!Array.isArray(tids) || !tids.length) {
         return [];
