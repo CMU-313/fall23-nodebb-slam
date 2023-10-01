@@ -1,7 +1,38 @@
-<div class="search-container" component="thread/sort">
-    <button class="btn btn-search" data-toggle="search-container" type="button">
-      <form name="searchTopics" action="{config.relative_path}/category/{../slug}" method="GET">
-      <input type="text" class="related" data-sort="related" placeholder="Search..." name="searchTopics">
-      </form>
-    <button class="btn btn-default" type="submit" onClick="return getRecentPosts()">Submit</button>
-</div>
+<form name="searchTopics" action="{config.relative_path}/category/{../slug}" method="GET">
+    <div class="search-container">
+        <input class="search-box" type="text" placeholder="Search..." name="searchTopics">
+        <button class="btn btn-default" type="submit" onClick="return getRecentPosts()">Submit</button>
+    </div>
+</form>
+<style>
+.search-container {
+    padding-top: 16px;
+}
+
+.search-box {
+    display: inline-block;
+    margin-bottom: 0;
+    padding: 8px 16px;
+    white-space: nowrap;
+    background-color: transparent;
+    transition: transform 250ms ease-in-out;
+    font-size: 11px;
+    line-height: 13px;
+    
+    &::placeholder {
+        color: color(#575756 a(0.8));
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
+
+    &:hover,
+        &:focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+}
+</style>
