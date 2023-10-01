@@ -20,6 +20,9 @@ module.exports = function (Categories) {
         topics.calculateTopicIndices(topicsData, data.start);
 
         results = await plugins.hooks.fire('filter:category.topics.get', { cid: data.cid, topics: topicsData, uid: data.uid });
+        if (data.query.searchTopics) {
+            results.topics = results.topics.filter(x => x.title.indexOf(data.query.searchTopics) !== -1);
+        }
         return { topics: results.topics, nextStart: data.stop + 1 };
     };
 

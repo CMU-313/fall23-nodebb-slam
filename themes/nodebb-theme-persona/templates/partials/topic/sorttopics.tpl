@@ -1,11 +1,7 @@
-<div title="[[topic:sort_by]]" class="search-container" component="thread/sort">
-    <button type="submit" onClick="return getRecentPosts()">Submit</button>
-    <button class="btn btn-sm btn-primary" data-toggle="search-container" type="button">
-    <span><i class="fa fa-fw fa-sort"></i></span></button>
-    <div class="search-container">
-      <form action="posts.js">
-      <input type="text" class="related" data-sort="related" placeholder="Search..." name="search">
-      <button type="submit" onClick="return getRecentPosts()">Submit</button>
+<div class="search-container" component="thread/sort">
+    <button class="btn btn-search" data-toggle="search-container" type="button">
+      <form name="searchTopics" action="{config.relative_path}/category/{../slug}" method="GET">
+      <input type="text" class="related" data-sort="related" placeholder="Search..." name="searchTopics">
       </form>
-    </div>
+    <button class="btn btn-default" type="submit" onClick="return getRecentPosts()">Submit</button>
 </div>

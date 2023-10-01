@@ -42,8 +42,8 @@ categoriesController.get = async function (req, res, next) {
     userData.pagination = pagination.create(page, pageCount, req.query);
     res.render('account/categories', userData);
 };
-
-const categories = require.main.require('./src/categories');
+/*
+// categories = require.main.require('./src/categories');
 const posts = require.main.require('./src/posts');
 
 async function filterByCategory(req, res) {
@@ -65,6 +65,7 @@ async function filterByCategory(req, res) {
 module.exports = {
     filterByCategory,
 };
+*/
 
 
 
