@@ -43,6 +43,29 @@ categoriesController.get = async function (req, res, next) {
     res.render('account/categories', userData);
 };
 
+const categories = require.main.require('./src/categories');
+const posts = require.main.require('./src/posts');
+
+async function filterByCategory(req, res) {
+    const categoryId = parseInt(req.query.categoryId, 10);
+
+    // Get the category's post IDs
+    const category = await categories.getCategoryById(categoryId);
+    const postIds = category.postWhitelist;
+
+    // Fetch the posts based on post IDs
+    const filteredPosts = await posts.getPostsData(postIds, req.uid);
+
+    // Render the filtered posts as HTML
+    const renderedPosts = await posts.getPostsHTML(filteredPosts, req.uid);
+
+    res.json({ html: renderedPosts });
+}
+
+module.exports = {
+    filterByCategory,
+};
+
 
 
 
