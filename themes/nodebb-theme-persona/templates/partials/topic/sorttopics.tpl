@@ -15,10 +15,14 @@
     line-height: 13px;
     padding: 12px;
     outline: 0;
-    text-transform: uppercase;
-    letter-spacing: 1.5px; 
     border: 1px solid transparent;
     border-bottom: 1px solid #575756;
     border-radius: 0;
+
+    &::placeholder {
+        color: color(#575756 a(0.8));
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+    }
 }
 </style>
