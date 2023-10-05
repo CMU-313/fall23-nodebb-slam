@@ -4,34 +4,21 @@
 </form>
 <style>
 .search-container {
-    padding-top: 16px;
+    padding-top: -20px;
 }
 
 .search-box {
-    display: inline-block;
+    display: inline-flex;
     margin-bottom: 0;
-    padding: 8px 16px;
-    white-space: nowrap;
     background-color: transparent;
-    transition: transform 250ms ease-in-out;
     font-size: 11px;
     line-height: 13px;
-    
-    &::placeholder {
-        color: color(#575756 a(0.8));
-        text-transform: uppercase;
-        letter-spacing: 1.5px;  
-    }
-
-    &:hover,
-        &:focus {
-            display: inline-block;
-            white-space: nowrap;
-            padding: 12px 0;
-            outline: 0;
-            border: 1px solid transparent;
-            border-bottom: 1px solid #575756;
-            border-radius: 0;
-        }
+    padding: 12px;
+    outline: 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; 
+    border: 1px solid transparent;
+    border-bottom: 1px solid #575756;
+    border-radius: 0;
 }
 </style>
