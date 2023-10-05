@@ -1,4 +1,4 @@
-<form class="search-container" name="searchTopics" action="{config.relative_path}/category/{../slug}" method="GET">
+<form name="searchTopics" style = "display:inline" action="{config.relative_path}/category/{../slug}" method="GET">
         <input class="search-box" type="text" placeholder="Search..." name="searchTopics">
         <button class="btn btn-default" type="submit" onClick="return getRecentPosts()">Submit</button>
 </form>
@@ -8,7 +8,7 @@
 }
 
 .search-box {
-    display: inline-flex;
+    display: inline;
     margin-bottom: 0;
     background-color: transparent;
     font-size: 11px;
