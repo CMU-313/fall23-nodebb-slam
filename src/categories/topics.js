@@ -2,6 +2,7 @@
 
 const db = require('../database');
 const topics = require('../topics');
+const posts = require('../posts');
 const plugins = require('../plugins');
 const meta = require('../meta');
 const privileges = require('../privileges');
@@ -21,7 +22,20 @@ module.exports = function (Categories) {
 
         results = await plugins.hooks.fire('filter:category.topics.get', { cid: data.cid, topics: topicsData, uid: data.uid });
         if (data.query.searchTopics) {
-            results.topics = results.topics.filter(x => x.title.indexOf(data.query.searchTopics) !== -1);
+            const searchLowerCase = data.query.searchTopics.toLowerCase();
+            const pred = async (topicObj) => {
+                if (topicObj.title.toLowerCase().includes(searchLowerCase)) {
+                    return true;
+                }
+                const allPids = await topics.getPids(topicObj.tid);
+                const contents = await posts.getPostsFields(allPids, ['content']);
+                return contents.filter(c => c.content.toLowerCase().includes(searchLowerCase)).length;
+            }
+            // https://stackoverflow.com/questions/71600782/async-inside-filter-function-in-javascript
+            results.topics = (await Promise.all(results.topics.map(async(topicObj) => ({
+                value: topicObj,
+                include: await pred(topicObj)
+            })))).filter(v => v.include).map(data => data.value);
         }
         return { topics: results.topics, nextStart: data.stop + 1 };
     };
@@ -105,8 +119,6 @@ module.exports = function (Categories) {
             set = `cid:${cid}:tids:votes`;
         } else if (sort === 'most_views') {
             set = `cid:${cid}:tids:views`;
-        } else if (sort === 'related') {
-            set = `cid:${cid}:tids:name`;
         }
 
         if (data.tag) {

@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <form name="searchTopics" style = "display:inline" action="{config.relative_path}/category/{../slug}" method="GET">
         <input class="search-box" type="text" placeholder="Search..." name="searchTopics">
-        <button class="btn btn-default" type="submit" onClick="return getRecentPosts()">Submit</button>
+        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 </form>
 <style>
 .search-container {
