@@ -30,11 +30,11 @@ module.exports = function (Categories) {
                 const allPids = await topics.getPids(topicObj.tid);
                 const contents = await posts.getPostsFields(allPids, ['content']);
                 return contents.filter(c => c.content.toLowerCase().includes(searchLowerCase)).length;
-            }
+            };
             // https://stackoverflow.com/questions/71600782/async-inside-filter-function-in-javascript
-            results.topics = (await Promise.all(results.topics.map(async(topicObj) => ({
+            results.topics = (await Promise.all(results.topics.map(async topicObj => ({
                 value: topicObj,
-                include: await pred(topicObj)
+                include: await pred(topicObj),
             })))).filter(v => v.include).map(data => data.value);
         }
         return { topics: results.topics, nextStart: data.stop + 1 };
