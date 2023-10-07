@@ -4,6 +4,9 @@
         <input class="search-box" type="text" placeholder="Search..." name="searchTopics">
         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 </form>
+<form name="showAll" style = "display:inline" formaction="{config.relative_path}/category/{../slug}" method="GET">
+    <button name="showAll" class="btn btn-default" type="submit">Show all posts</button>
+</form>
 <style>
 .search-container {
     padding-top: -20px;
