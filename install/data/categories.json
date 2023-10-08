@@ -1,35 +1,35 @@
 [
     {
-        "name": "Class 1",
+        "name": "Foundations of Software Engineering",
         "description": "Foundations of Software Engineering",
-        "descriptionParsed": "<p>Foundations of Software Engineering</p>\n",
+        "descriptionParsed": "<p>17-313</p>\n",
         "bgColor": "#fda34b",
         "color": "#ffffff",
         "icon" : "fa-bullhorn",
         "order": 1
     },
     {
-        "name": "Class 2",
-        "description": "Principles of Microeconomics",
-        "descriptionParsed": "<p>Principles of Microeconomics</p>\n",
+        "name": "Information Systems Milieux",
+        "description": "Information Systems Milieux",
+        "descriptionParsed": "<p>67-250</p>\n",
         "bgColor": "#59b3d0",
         "color": "#ffffff",
         "icon" : "fa-comments-o",
         "order": 2
     },
     {
-        "name": "Blogs",
-        "description": "Blog posts from individual members",
-        "descriptionParsed": "<p>Blog posts from individual members</p>\n",
+        "name": "Principles of Imperative Computation",
+        "description": "Principles of Imperative Computation",
+        "descriptionParsed": "<p>15-122</p>\n",
         "bgColor": "#86ba4b",
         "color": "#ffffff",
         "icon" : "fa-newspaper-o",
         "order": 4
     },
     {
-        "name": "Comments & Feedback",
-        "description": "Got a question? Ask away!",
-        "descriptionParsed": "<p>Got a question? Ask away!</p>\n",
+        "name": "Science and Science Fiction",
+        "description": "Science and Science Fiction",
+        "descriptionParsed": "<p>33-120</p>\n",
         "bgColor": "#e95c5a",
         "color": "#ffffff",
         "icon" : "fa-question",

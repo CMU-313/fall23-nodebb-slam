@@ -13,6 +13,8 @@
         };
     </script>
 
+    <script src="/plugins/nodebb-theme-persona/assets/topic-toggle.js" type="module"></script>
+
     {{{if useCustomHTML}}}
     {{customHTML}}
     {{{end}}}

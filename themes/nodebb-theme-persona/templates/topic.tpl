@@ -43,7 +43,8 @@
                 {{{ end }}}
 
                 <!-- IMPORT partials/post_bar.tpl -->
-            </div>
+
+                
         </div>
         <!-- IF merger -->
         <div component="topic/merged/message" class="alert alert-warning clearfix">
