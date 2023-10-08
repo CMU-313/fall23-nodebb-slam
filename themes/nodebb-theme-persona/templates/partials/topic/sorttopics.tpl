@@ -5,7 +5,7 @@
         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 </form>
 <form name="showAll" style = "display:inline" formaction="{config.relative_path}/category/{../slug}" method="GET">
-    <button name="showAll" class="btn btn-default" type="submit">Show all topics</button>
+    <button class="btn btn-default" type="submit">Show all topics</button>
 </form>
 <style>
 .search-container {
