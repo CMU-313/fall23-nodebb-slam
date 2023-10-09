@@ -151,6 +151,42 @@ describe('Categories', () => {
                 done();
             });
         });
+
+        it('should return a list of topics by search keyword in title', (done) => {
+            const keyword = Categories.getCategoryTopics.searchLowerCase;
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                keyword: keyword,
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.title.includes(keyword)));
+
+                done();
+            });
+        });
+
+        it('should return a list of topics by search keyword in description', (done) => {
+            const keyword = Categories.getCategoryTopics.searchLowerCase;
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                keyword: keyword,
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.content.includes(keyword)));
+
+                done();
+            });
+        });
     });
 
     describe('Categories.moveRecentReplies', () => {
