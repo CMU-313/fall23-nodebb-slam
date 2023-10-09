@@ -36,8 +36,8 @@ module.exports = function (Categories) {
                 contents.forEach(c => console.assert(typeof c.content === 'string', 'Each item in contents must have a content property of type string'));
                 return contents.filter(c => c.content.toLowerCase().includes(searchLowerCase)).length;
             };
-            console.assert(Array.isArray(results.topics), 'results.topics must be an array');
             // https://stackoverflow.com/questions/71600782/async-inside-filter-function-in-javascript
+            console.assert(Array.isArray(results.topics), 'results.topics must be an array');
             results.topics = (await Promise.all(results.topics.map(async topicObj => ({
                 value: topicObj,
                 include: await pred(topicObj),
