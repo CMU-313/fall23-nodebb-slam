@@ -911,7 +911,6 @@ describe('Categories', () => {
         assert.strictEqual(child1.cid, data.children[0].cid);
         assert.strictEqual(child2.cid, data.children[0].children[0].cid);
     });
-    
     it('should not be case-sensitive when searching for topics by keyword in description', (done) => {
         const keyword = 'Welcome';
         const mixedCaseKeyword = 'wElCoMe';
@@ -932,9 +931,9 @@ describe('Categories', () => {
             }, (err, result) => {
                 assert.equal(err, null);
                 assert(Array.isArray(result.topics));
-                const containsKeyword = result.topics.some((topic) => {
-                    return topic.content.includes(keyword) || topic.content.includes(mixedCaseKeyword);
-                });
+                const containsKeyword = result.topics.some(topic =>
+                    topic.content.includes(keyword) || topic.content.includes(mixedCaseKeyword)
+                );
                 assert(containsKeyword);
                 done();
             });
