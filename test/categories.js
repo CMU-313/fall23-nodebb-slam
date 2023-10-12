@@ -182,7 +182,7 @@ describe('Categories', () => {
             }, (err, result) => {
                 assert.equal(err, null);
                 assert(Array.isArray(result.topics));
-                assert(result.topics.every(topic => topic instanceof Object && topic.content.includes(keyword)));
+                assert(result.topics.every(topic => topic instanceof Object && topic.data.includes(keyword)));
 
                 done();
             });

@@ -28,9 +28,5 @@
                 <span class="timeago" title="{../timestampISO}"></span>
             </div>
         </div>
-        <div class = "anony">
-            <label for="anonymousToggle"> Post Anonymously:</label>
-            <input type="checkbox" id="anonymousToggle"/>    
-        </div>
     </div>
 </li>
