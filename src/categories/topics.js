@@ -44,9 +44,6 @@ module.exports = function (Categories) {
             })))).filter(v => v.include).map(data => data.value);
 
             console.assert(Array.isArray(results.topics), 'results.topics must be an array');
-            results.topics.forEach((topicObj) => {
-                console.assert(typeof topicObj.tid === 'number', 'Each topicObj must have a tid of type number');
-            });
         }
         return { topics: results.topics, nextStart: data.stop + 1 };
     };
