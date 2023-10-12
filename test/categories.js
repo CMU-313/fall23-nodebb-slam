@@ -931,9 +931,9 @@ describe('Categories', () => {
             }, (err, result) => {
                 assert.equal(err, null);
                 assert(Array.isArray(result.topics));
-                const containsKeyword = result.topics.some(topic =>
+                const containsKeyword = result.topics.some((topic) => (
                     topic.content.includes(keyword) || topic.content.includes(mixedCaseKeyword)
-                );
+                ));
                 assert(containsKeyword);
                 done();
             });
