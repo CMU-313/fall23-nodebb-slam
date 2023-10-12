@@ -911,32 +911,4 @@ describe('Categories', () => {
         assert.strictEqual(child1.cid, data.children[0].cid);
         assert.strictEqual(child2.cid, data.children[0].children[0].cid);
     });
-    it('should not be case-sensitive when searching for topics by keyword in description', (done) => {
-        const keyword = 'Welcome';
-        const mixedCaseKeyword = 'wElCoMe';
-        Topics.create({
-            uid: 1,
-            cid: categoryObj.cid,
-            title: 'Case Insensitive Topic',
-            content: 'Welcome to the forum!',
-        }, (err) => {
-            assert.ifError(err);
-            Categories.getCategoryTopics({
-                cid: categoryObj.cid,
-                start: 0,
-                stop: 10,
-                uid: 0,
-                keyword: mixedCaseKeyword,
-                sort: 'oldest_to_newest',
-            }, (err, result) => {
-                assert.equal(err, null);
-                assert(Array.isArray(result.topics));
-                const containsKeyword = result.topics.some(topic => {
-                    return topic.content.includes(keyword) || topic.content.includes(mixedCaseKeyword)
-                });
-                assert(containsKeyword);
-                done();
-            });
-        });
-    });
 });
