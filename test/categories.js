@@ -936,7 +936,7 @@ describe('Categories', () => {
                 start: 0,
                 stop: 10,
                 uid: 0,
-                query: {searchTopics:keyword},
+                query: { searchTopics: keyword },
                 sort: 'oldest_to_newest',
             }, (err, result) => {
                 assert.equal(err, null);
@@ -954,12 +954,12 @@ describe('Categories', () => {
                 start: 0,
                 stop: 10,
                 uid: 0,
-                query: {searchTopics:keyword},
+                query: { searchTopics: keyword },
                 sort: 'oldest_to_newest',
             }, (err, result) => {
                 assert.equal(err, null);
                 assert(Array.isArray(result.topics));
-                assert(result.topics.every(topic => topic instanceof Object && topic.postcount == 1));
+                assert(result.topics.every(topic => topic instanceof Object && topic.postcount === 1));
 
                 done();
             });
@@ -972,12 +972,12 @@ describe('Categories', () => {
                 start: 0,
                 stop: 10,
                 uid: 0,
-                query: {searchTopics:keyword},
+                query: { searchTopics: keyword },
                 sort: 'oldest_to_newest',
             }, (err, result) => {
                 assert.equal(err, null);
                 assert(Array.isArray(result.topics));
-                assert(result.topics.every(topic => topic instanceof Object && topic.postcount == 1));
+                assert(result.topics.every(topic => topic instanceof Object && topic.postcount === 1));
 
                 done();
             });
