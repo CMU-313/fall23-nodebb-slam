@@ -21,7 +21,7 @@ module.exports = function (Categories) {
         topics.calculateTopicIndices(topicsData, data.start);
 
         results = await plugins.hooks.fire('filter:category.topics.get', { cid: data.cid, topics: topicsData, uid: data.uid });
-        if (data.query.searchTopics) {
+        if (data.query && data.query.searchTopics) {
             console.assert(typeof data.query.searchTopics === 'string', 'data.query.searchTopics must be a string');
             const searchLowerCase = data.query.searchTopics.toLowerCase();
             const pred = async (topicObj) => {
