@@ -117,42 +117,6 @@ describe('Categories', () => {
         });
     });
 
-    describe('.getCategoryTopics', () => {
-        it('should return a list of topics', (done) => {
-            Categories.getCategoryTopics({
-                cid: categoryObj.cid,
-                start: 0,
-                stop: 10,
-                uid: 0,
-                sort: 'oldest_to_newest',
-            }, (err, result) => {
-                assert.equal(err, null);
-
-                assert(Array.isArray(result.topics));
-                assert(result.topics.every(topic => topic instanceof Object));
-
-                done();
-            });
-        });
-
-        it('should return a list of topics by a specific user', (done) => {
-            Categories.getCategoryTopics({
-                cid: categoryObj.cid,
-                start: 0,
-                stop: 10,
-                uid: 0,
-                targetUid: 1,
-                sort: 'oldest_to_newest',
-            }, (err, result) => {
-                assert.equal(err, null);
-                assert(Array.isArray(result.topics));
-                assert(result.topics.every(topic => topic instanceof Object && topic.uid === '1'));
-
-                done();
-            });
-        });
-    });
-
     describe('Categories.moveRecentReplies', () => {
         let moveCid;
         let moveTid;
@@ -910,5 +874,113 @@ describe('Categories', () => {
         });
         assert.strictEqual(child1.cid, data.children[0].cid);
         assert.strictEqual(child2.cid, data.children[0].children[0].cid);
+    });
+
+    describe('.getCategoryTopics', () => {
+        let topic1;
+        let topic2;
+        before(async () => {
+            topic1 = await Topics.post({
+                uid: posterUid,
+                cid: categoryObj.cid,
+                title: 'Test Search Topic',
+                content: 'The content of a test topic',
+                tags: ['nodebb'],
+            });
+            topic2 = await Topics.post({
+                uid: posterUid,
+                cid: categoryObj.cid,
+                title: 'blahblah',
+                content: 'The content of blahblah topic',
+            });
+        });
+
+        it('should return a list of topics', (done) => {
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object));
+
+                done();
+            });
+        });
+
+        it('should return a list of topics by a specific user', (done) => {
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                targetUid: 1,
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.uid === posterUid));
+
+                done();
+            });
+        });
+
+        it('should return a list of topics by search keyword in title', (done) => {
+            const keyword = 'Test';
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                query: { searchTopics: keyword },
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.title.includes(keyword)));
+
+                done();
+            });
+        });
+
+        it('should return a list of topics by search keyword in description', (done) => {
+            const keyword = 'blahblah';
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                query: { searchTopics: keyword },
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.postcount === 1));
+
+                done();
+            });
+        });
+
+        it('should return a list of topics with no case sensitivity', (done) => {
+            const keyword = 'blAhBlah';
+            Categories.getCategoryTopics({
+                cid: categoryObj.cid,
+                start: 0,
+                stop: 10,
+                uid: 0,
+                query: { searchTopics: keyword },
+                sort: 'oldest_to_newest',
+            }, (err, result) => {
+                assert.equal(err, null);
+                assert(Array.isArray(result.topics));
+                assert(result.topics.every(topic => topic instanceof Object && topic.postcount === 1));
+
+                done();
+            });
+        });
     });
 });
