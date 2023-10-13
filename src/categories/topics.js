@@ -22,20 +22,29 @@ module.exports = function (Categories) {
 
         results = await plugins.hooks.fire('filter:category.topics.get', { cid: data.cid, topics: topicsData, uid: data.uid });
         if (data.query.searchTopics) {
+            console.assert(typeof data.query.searchTopics === 'string', 'data.query.searchTopics must be a string');
             const searchLowerCase = data.query.searchTopics.toLowerCase();
             const pred = async (topicObj) => {
+                console.assert(topicObj && typeof topicObj.title === 'string', 'topicObj must have a title of type string');
                 if (topicObj.title.toLowerCase().includes(searchLowerCase)) {
                     return true;
                 }
                 const allPids = await topics.getPids(topicObj.tid);
+                console.assert(Array.isArray(allPids), 'allPids must be an array');
                 const contents = await posts.getPostsFields(allPids, ['content']);
+                console.assert(Array.isArray(contents), 'contents must be an array');
+                contents.forEach(c => console.assert(typeof c.content === 'string', 'Each item in contents must have a content property of type string'));
                 return contents.filter(c => c.content.toLowerCase().includes(searchLowerCase)).length;
             };
+
+            console.assert(Array.isArray(results.topics), 'results.topics must be an array');
             // https://stackoverflow.com/questions/71600782/async-inside-filter-function-in-javascript
             results.topics = (await Promise.all(results.topics.map(async topicObj => ({
                 value: topicObj,
                 include: await pred(topicObj),
             })))).filter(v => v.include).map(data => data.value);
+
+            console.assert(Array.isArray(results.topics), 'results.topics must be an array');
         }
         return { topics: results.topics, nextStart: data.stop + 1 };
     };
