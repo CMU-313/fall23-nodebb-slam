@@ -897,7 +897,7 @@ describe('Categories', () => {
             });
         });
     });
-    
+
     it('should return nested children categories', async () => {
         const rootCategory = await Categories.create({ name: 'root' });
         const child1 = await Categories.create({ name: 'child1', parentCid: rootCategory.cid });
