@@ -1,5 +1,6 @@
 import { UserObjectSlim } from './user';
 
+/* @noflow */
 export type GroupDataObject = {
   name: string;
   slug: string;
@@ -27,8 +28,10 @@ export type GroupDataObject = {
   memberPostCidsArray: number[];
 };
 
+/* @noflow */
 export type GroupFullObject = GroupDataObject & GroupFullObjectProperties;
 
+/* @noflow */
 export type GroupFullObjectProperties = {
   descriptionParsed: string;
   members: UserObjectSlim[];

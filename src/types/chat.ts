@@ -1,5 +1,6 @@
 import { UserObjectSlim } from './user';
 
+/* @noflow */
 export type MessageObject = {
   content: string;
   timestamp: number;
@@ -17,6 +18,7 @@ export type MessageObject = {
   cleanedContent: string;
 };
 
+/* @noflow */
 export type RoomObject = {
   owner: number;
   roomId: number;
@@ -24,10 +26,12 @@ export type RoomObject = {
   groupChat: boolean;
 };
 
+/* @noflow */
 export type RoomUserList = {
   users: UserObjectSlim[];
 };
 
+/* @noflow */
 export type RoomObjectFull = {
   isOwner: boolean;
   users: UserObjectSlim[];

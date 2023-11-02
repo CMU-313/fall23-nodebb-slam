@@ -1,7 +1,9 @@
+/* @noflow */
 export type Stats = {
   stats: Stat[];
 };
 
+/* @noflow */
 export type Stat = {
   yesterday: number;
   today: number;
@@ -19,6 +21,7 @@ export type Stat = {
   name: string;
 } & StatOptionalProperties;
 
+/* @noflow */
 export type StatOptionalProperties = {
   name: string;
   href: string;

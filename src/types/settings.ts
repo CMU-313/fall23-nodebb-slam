@@ -1,3 +1,4 @@
+/* @noflow */
 export type SettingsObject = {
   showemail: boolean;
   usePagination: boolean;

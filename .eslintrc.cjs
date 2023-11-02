@@ -44,6 +44,13 @@ function find_compiled_js() {
     module.exports = {
         extends: ["nodebb"],
         root: true,
+        parser: 'hermes-eslint',
+        plugins: [
+        'ft-flow'
+        ],
+        extends: [
+        'plugin:ft-flow/recommended',
+        ],
         ignorePatterns: find_compiled_js(),
         rules: {
             "indent": ["error", 4]
@@ -63,7 +70,9 @@ function find_compiled_js() {
                 },
                 rules: {
                     "no-use-before-define": "off",
-                    "@typescript-eslint/no-use-before-define": "error",			
+                    "@typescript-eslint/no-use-before-define": "error",	
+                    "no-prototype-builtins": "off",
+                    "import/order": "off",
                 }
             }
         ]

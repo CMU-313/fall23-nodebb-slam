@@ -1,3 +1,4 @@
+/* @noflow */
 export type TagObject = {
   value: string;
   score: number;

@@ -1,7 +1,9 @@
+/* @noflow */
 export type PaginationObject = {
   pagination: Pagination;
 };
 
+/* @noflow */
 export interface Pagination {
   prev: ActivePage;
   next: ActivePage;

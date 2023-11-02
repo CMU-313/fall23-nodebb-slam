@@ -2,6 +2,7 @@ import { CategoryObject } from './category';
 import { TopicObject } from './topic';
 import { UserObjectSlim } from './user';
 
+/* @noflow */
 export type PostObject = {
   pid: number;
   tid: number;
