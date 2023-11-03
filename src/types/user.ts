@@ -1,6 +1,7 @@
 import { GroupFullObject } from './group';
 import { StatusObject } from './status';
 
+/* @noflow */
 export type UserObjectSlim = {
   uid: number;
   username: string;
@@ -25,12 +26,14 @@ export type UserObjectSlim = {
   banned_until_readable: string;
 };
 
+/* @noflow */
 export type UserObjectACP = UserObjectSlim & {
   administrator: boolean;
   ip: string;
   ips: string[];
 };
 
+/* @noflow */
 export type UserObject = UserObjectSlim & {
   email: string;
   fullname: string;
@@ -51,6 +54,7 @@ export type UserObject = UserObjectSlim & {
   groupTitleArray: string[];
 };
 
+/* @noflow */
 export type UserObjectFull = UserObject & {
   aboutmeParsed: string;
   age: number;
@@ -89,6 +93,7 @@ export type UserObjectFull = UserObject & {
   'email:disableEdit': number;
 };
 
+/* @noflow */
 export type Counts = {
   best: number;
   blocks: number;
@@ -106,6 +111,7 @@ export type Counts = {
   watched: number;
 };
 
+/* @noflow */
 export type ProfileLink = {
   id: string;
   route: string;
@@ -115,6 +121,7 @@ export type ProfileLink = {
   icon: string;
 };
 
+/* @noflow */
 export type Visibility = {
   self: boolean;
   other: boolean;
@@ -124,6 +131,7 @@ export type Visibility = {
   canViewInfo: boolean;
 };
 
+/* @noflow */
 export type SSO = {
   associated: boolean;
   url: string;

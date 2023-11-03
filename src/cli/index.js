@@ -1,5 +1,3 @@
-/* eslint-disable import/order */
-
 'use strict';
 
 const fs = require('fs');
@@ -98,7 +96,7 @@ prestart.versionCheck();
 
 if (!configExists && process.argv[2] !== 'setup') {
     require('./setup').webInstall();
-    return;
+    // return;
 }
 
 process.env.CONFIG = configFile;

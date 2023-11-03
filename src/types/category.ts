@@ -1,3 +1,4 @@
+/* @noflow */
 export type CategoryObject = {
   cid: number;
   name: string;
@@ -25,6 +26,7 @@ export type CategoryObject = {
   subCategoriesPerPage: number;
 };
 
+/* @noflow */
 export type CategoryOptionalProperties = {
   cid: number;
   backgroundImage: string;

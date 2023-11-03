@@ -1,5 +1,6 @@
 import { UserObjectSlim } from './user';
 
+/* @noflow */
 export type FlagHistoryObject = {
   history: History[];
 };
@@ -20,11 +21,12 @@ interface Meta {
   labelClass: string;
 }
 
+/* @noflow */
 export type FlagNotesObject = {
   notes: Note[];
 };
 
-
+/* @noflow */
 export interface Note {
   uid: number;
   content: string;
@@ -33,6 +35,7 @@ export interface Note {
   user: UserObjectSlim;
 }
 
+/* @noflow */
 export type FlagObject = {
   state: string;
   flagId: number;
@@ -47,6 +50,7 @@ export type FlagObject = {
   reports: Reports;
 } & FlagHistoryObject & FlagNotesObject;
 
+/* @noflow */
 export interface Reports {
   value: string;
   timestamp: number;

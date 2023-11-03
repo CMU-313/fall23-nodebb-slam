@@ -2,9 +2,11 @@ import { CategoryObject } from './category';
 import { TagObject } from './tag';
 import { UserObjectSlim } from './user';
 
+/* @noflow */
 export type TopicObject =
     TopicObjectSlim & TopicObjectCoreProperties & TopicObjectOptionalProperties;
 
+/* @noflow */
 export type TopicObjectCoreProperties = {
   lastposttime: number;
   category: CategoryObject;
@@ -19,6 +21,7 @@ export type TopicObjectCoreProperties = {
   icons: string[];
 };
 
+/* @noflow */
 export type TopicObjectOptionalProperties = {
   tid: number;
   thumb: string;
@@ -38,8 +41,10 @@ interface Teaser {
   index: number;
 }
 
+/* @noflow */
 export type TopicObjectSlim = TopicSlimProperties & TopicSlimOptionalProperties;
 
+/* @noflow */
 export type TopicSlimProperties = {
   tid: number;
   uid: number;
@@ -69,12 +74,14 @@ export type TopicSlimProperties = {
   thumbs: Thumb[];
 };
 
+/* @noflow */
 export type Thumb = {
   id: number;
   name: string;
   url: string;
 };
 
+/* @noflow */
 export type TopicSlimOptionalProperties = {
   tid: number;
   numThumbs: number;
