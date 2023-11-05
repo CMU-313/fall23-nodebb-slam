@@ -1,0 +1,47 @@
+[32m21:27:38 (42301) INFO ProjectReader[39m Found 549 of 5826 file(s) to be mutated.
+[91m21:27:39 (42301) ERROR Stryker[39m Unexpected error occurred while running Stryker SyntaxError: /Users/megchityala/fall23-nodebb-slam/src/cli/index.js: 'return' outside of function. (101:4)
+
+   99 | if (!configExists && process.argv[2] !== 'setup') {
+  100 |     require('./setup').webInstall();
+> 101 |     return;
+      |     ^
+  102 | }
+  103 |
+  104 | process.env.CONFIG = configFile;
+    at constructor (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:356:19)
+    at V8IntrinsicMixin.raise (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:3223:19)
+    at V8IntrinsicMixin.parseReturnStatement (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13000:12)
+    at V8IntrinsicMixin.parseStatementContent (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12626:21)
+    at V8IntrinsicMixin.parseStatementLike (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12593:17)
+    at V8IntrinsicMixin.parseStatementListItem (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12573:17)
+    at V8IntrinsicMixin.parseBlockOrModuleBlockBody (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13194:61)
+    at V8IntrinsicMixin.parseBlockBody (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13187:10)
+    at V8IntrinsicMixin.parseBlock (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13175:10)
+    at V8IntrinsicMixin.parseStatementContent (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12695:21)
+    at V8IntrinsicMixin.parseStatementLike (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12593:17)
+    at V8IntrinsicMixin.parseStatementOrSloppyAnnexBFunctionDeclaration (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12583:17)
+    at V8IntrinsicMixin.parseIfStatement (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12994:28)
+    at V8IntrinsicMixin.parseStatementContent (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12624:21)
+    at V8IntrinsicMixin.parseStatementLike (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12593:17)
+    at V8IntrinsicMixin.parseModuleItem (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12570:17)
+    at V8IntrinsicMixin.parseBlockOrModuleBlockBody (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13194:36)
+    at V8IntrinsicMixin.parseBlockBody (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:13187:10)
+    at V8IntrinsicMixin.parseProgram (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12469:10)
+    at V8IntrinsicMixin.parseTopLevel (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:12459:25)
+    at V8IntrinsicMixin.parse (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:14381:10)
+    at parse (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/parser/lib/index.js:14422:38)
+    at parser (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/core/lib/parser/index.js:41:34)
+    at parser.next (<anonymous>)
+    at parse (/Users/megchityala/fall23-nodebb-slam/node_modules/@babel/core/lib/parse.js:25:37)
+    at parse.next (<anonymous>)
+    at step (/Users/megchityala/fall23-nodebb-slam/node_modules/gensync/index.js:261:32)
+    at /Users/megchityala/fall23-nodebb-slam/node_modules/gensync/index.js:273:13
+    at async.call.result.err.err (/Users/megchityala/fall23-nodebb-slam/node_modules/gensync/index.js:223:11) {
+  code: 'BABEL_PARSE_ERROR',
+  reasonCode: 'IllegalReturn',
+  loc: Position { line: 101, column: 4, index: 3412 },
+  pos: 3412
+}
+[32m21:27:39 (42301) INFO Stryker[39m This might be a known problem with a solution documented in our troubleshooting guide.
+[32m21:27:39 (42301) INFO Stryker[39m You can find it at https://stryker-mutator.io/docs/stryker-js/troubleshooting/
+[32m21:27:39 (42301) INFO Stryker[39m Still having trouble figuring out what went wrong? Try `npx stryker run --fileLogLevel trace --logLevel debug` to get some more info.
