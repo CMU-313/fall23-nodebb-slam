@@ -1,0 +1,4 @@
+node_modules
+build
+**/*.tpl
+src/upgrades/TEMPLATE
